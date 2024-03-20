@@ -1,0 +1,11 @@
+body{
+    background-color: #575757;
+}
+#track{
+    margin: auto;
+    width: 60%;
+    height: 500px;
+    background-color: #8D8D8D;
+    margin-top: 10%;
+    border-radius: 20px;
+}
