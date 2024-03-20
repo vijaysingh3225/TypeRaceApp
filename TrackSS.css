@@ -1,11 +1,26 @@
-body{
-    background-color: #575757;
+*{
+    font-family:monospace, Courier;
 }
-#track{
+body{
+    background-color: #444444;
+
+}
+
+.track-shadow-drop--green {
+    border: 1px solid #DADA00;
+    box-shadow: #DADA00 4px 4px 0px 0px;
+  } 
+.track{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: auto;
     width: 60%;
     height: 500px;
     background-color: #8D8D8D;
     margin-top: 10%;
     border-radius: 20px;
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
 }
