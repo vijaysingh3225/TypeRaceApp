@@ -7,8 +7,8 @@ body{
 }
 
 .track-shadow-drop--green {
-    border: 1px solid #DADA00;
-    box-shadow: #DADA00 4px 4px 0px 0px;
+    border: 1px solid #D8D8D8;
+    box-shadow: #D8D8D8 4px 4px 0px 0px;
   } 
 .track{
     display: flex;
@@ -18,9 +18,70 @@ body{
     width: 60%;
     height: 500px;
     background-color: #8D8D8D;
-    margin-top: 10%;
+    margin-top:20px;
     border-radius: 20px;
     color: white;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: 700;
+    text-align: center;
+}
+#word-count-btn-container{
+    margin: 8% auto auto auto;
+    width: 35%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn2 {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+} 
+.btn2:hover{
+    cursor: pointer;
+}
+.btn2:active .btn-slide-show-text1 {
+    margin-left: 65px;
+} 
+   
+.btn-shadow-drop2 {
+    position: relative;
+    background: #8D8D8D;
+    padding: 20px;
+    font-size: 0.9em;
+    font-weight: 700;
+    transition: all 0.1s ease-in-out 0s;
+    left: 0px;
+    top: 0px;
+    width: 100px;
+    text-align: center;
+} 
+   
+.btn-shadow-drop2:active{
+    left: 4px;
+    top: 4px;
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px;
+} 
+   
+.btn-shadow-drop--green2 {
+    border: 1px solid #666600;
+    color: white;
+    box-shadow: #666600 4px 4px 0px 0px;
+    font-weight: 700;
+    font-size: 1.3rem;
+} 
+#word-count-container{
+    margin: 35px auto;
+    width: 10%;
+    color: white;
+    background-color: #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 20px;
+}
+#track-text{
+    width: 90%;
 }
