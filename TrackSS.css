@@ -26,7 +26,7 @@ body{
     text-align: center;
 }
 #word-count-btn-container{
-    margin: 8% auto auto auto;
+    margin: 4% auto auto auto;
     width: 35%;
     height: 60px;
     display: flex;
@@ -84,4 +84,36 @@ body{
 }
 #track-text{
     width: 90%;
+}
+#start-btn{
+    margin:40px auto auto auto;
+}
+.starting-light{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #909090;
+    height: 200px;
+    width: 100px;
+    margin: auto;
+    border-radius: 20px;
+    
+}
+.light-red-l, .light-orange-l, .light-green-l, .light-red-r, .light-orange-r, .light-green-r{
+    background-color: black;
+    margin: auto;
+    height: 60px;
+    width:60px;
+    border-radius: 50px;
+    color:white;
+
+}
+#track-container{
+    margin: auto;
+    display: flex;
+    justify-content:center;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
 }

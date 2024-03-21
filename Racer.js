@@ -2,45 +2,90 @@
 const wordCountBtn1 = document.querySelector("#word-count-btn-1");
 const wordCountBtn2 = document.querySelector("#word-count-btn-2");
 const wordCountBtn3 = document.querySelector("#word-count-btn-3");
+const startButton = document.querySelector("#start-btn");
+const redLightL = document.querySelector(".light-red-l");
+const orangeLightL = document.querySelector(".light-orange-l");
+const greenLightL = document.querySelector(".light-green-l");
+const redLightR = document.querySelector(".light-red-r");
+const orangeLightR = document.querySelector(".light-orange-r");
+const greenLightR = document.querySelector(".light-green-r");
 const mainTrack = document.querySelector("#track-text");
 const wordCount = document.querySelector("#word-count");
-let currentWordCount = 10;
-let array10 = "";
-let array25 = "";
-let array50 = "";
+let currentWordCount = 0;
+let sentenceString = "";
 let randomNumber = Math.floor(Math.random() * 1000);
+let nextKey = "";
 
+startButton.onclick = function() {
+    if (currentWordCount > 0) {
+        setTimeout(() => {
+            redLightL.style.backgroundColor = "#830000";
+            redLightR.style.backgroundColor = "#830000";
+        }, 500);
+    
+        setTimeout(() => {
+            orangeLightL.style.backgroundColor = "#BFB800";
+            orangeLightR.style.backgroundColor = "#BFB800";
+        }, 1500);
+    
+        setTimeout(() => {
+            greenLightL.style.backgroundColor = "green";
+            greenLightR.style.backgroundColor = "green";
+        }, 2500);
+        
+        // Iterate over each character in the sentenceString
+        for (let i = 0; i < sentenceString.length; i++) {
+            const expectedKey = sentenceString.charAt(i);
+            let text = mainTrack.innerText;
+            let index = i;
+            const handleInput = (event) => {
+                if (event.key === expectedKey) {
+                    console.log(`You pressed the expected key: ${expectedKey}`);
+
+                    let newText = text.substring(0, index) + `<span style="color: red;">${text[index]}</span>` + text.substring(index + 1);
+                    mainTrack.innerHTML = newText;
+                } else {
+
+                }
+                document.removeEventListener('keydown', handleInput);
+            };
+            document.addEventListener('keydown', handleInput);
+        }
+    } else {
+        mainTrack.innerText = "SELECT WORD COUNT BEFORE STARTING!";
+    }
+};
 wordCountBtn1.onclick = function() {
-    array10="";
-    mainTrack.innerText = "asdfasdfasdfasdfasdf";
+    sentenceString="";
     currentWordCount = 10;
-    wordCount.innerText = randomNumber;
+    wordCount.innerText = 10;
     for (let i = 0; i < 10; i++) {
         const randomNumber = Math.floor(Math.random() * 1000);
-        array10+= wordsArray[randomNumber]+" ";
+        sentenceString+= wordsArray[randomNumber]+" ";
     }
-    mainTrack.innerText = array10;
+    mainTrack.innerText = sentenceString;
 }
-
+//Changes word count to 25
 wordCountBtn2.onclick = function() {
-    array25="";
-    mainTrack.innerText = "asdfasdfasdfasdfasdf";
+    wordCount.innerText = 25;
+    sentenceString="";
     currentWordCount = 25;
     for (let i = 0; i < 25; i++) {
         const randomNumber = Math.floor(Math.random() * 1000);
-        array25+= wordsArray[randomNumber]+" ";
+        sentenceString+= wordsArray[randomNumber]+" ";
     }
-    mainTrack.innerText = array25;
+    mainTrack.innerText = sentenceString;
 };
-
+//Changes word count to 50
 wordCountBtn3.onclick = function() {
-    array50="";
+    sentenceString="";
+    wordCount.innerText = 50;
     currentWordCount = 50;
     for (let i = 0; i < 50; i++) {
         const randomNumber = Math.floor(Math.random() * 1000);
-        array50+= wordsArray[randomNumber]+" ";
+        sentenceString+= wordsArray[randomNumber]+" ";
     }
-    mainTrack.innerText = array50;
+    mainTrack.innerText = sentenceString;
 }
 
 const wordsArray = [
