@@ -54,10 +54,14 @@ function colorCharacterAtPosition(x) {
   function errorColorChange(x) {
     const outputDiv = document.getElementById('track-text');
     const text = outputDiv.innerText;
-    const newText = text.substring(0, x-errorCount) + `<span class="cursor-red">${text.substring(x-errorCount, x+1)}</span>` + text.substring(x + 1);
+    const newText = text.substring(0, x-errorCount) + `<span class="error-highlight">${text.substring(x-errorCount, x)}</span>`+`<span class="cursor">${text.charAt(x)}</span>` + text.substring(x + 1);
     outputDiv.innerHTML = newText;
-    console.log(text.substring(0, x-errorCount));
-    text.substring(errorCount);
+    console.log("1: "+text.substring(0, x-1));
+    console.log("2: "+text.substring(x-1, x-1));
+    console.log("3: "+text.charAt(x));
+    console.log("4: "+text.substring(0, x-1));
+    console.log("5: "+text.substring(x+1));
+
   }
 function handleKeyPress(event) {
     const key = event.key;
@@ -67,12 +71,12 @@ function handleKeyPress(event) {
             nextKey=sentenceString.charAt(racer);
     }else if(errorCount<4 && key != 'Backspace'){
         racer++;
+        errorCount++;
         errorColorChange(racer);
         errorCommitted = true;
-        errorCount++;
+        
     }
     else if(key == 'Backspace'){
-        console.log("space");
         if(racer>0)
         racer--;
         if(errorCount>1){
@@ -87,8 +91,9 @@ function handleKeyPress(event) {
         nextKey=sentenceString.charAt(racer); 
     }
     else{
-
     }
+    console.log("Error Count: "+errorCount);
+    console.log("racer: "+racer);
   }
 wordCountBtn1.onclick = function() {
     if(!gameRunning){

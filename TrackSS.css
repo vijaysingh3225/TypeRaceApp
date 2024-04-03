@@ -128,5 +128,7 @@ body{
     background-image: linear-gradient(to right, white 15%, transparent 15%);
     background-repeat: no-repeat;
 }
-
+.error-highlight{
+    background-color: red;
+}
 
