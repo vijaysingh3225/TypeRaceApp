@@ -17,7 +17,7 @@ body{
     margin: auto;
     width: 55%;
     height: 350px;
-    background-color: #8D8D8D;
+    background-color: #5F5F5F;
     margin-top:20px;
     border-radius: 20px;
     color: white;
@@ -47,7 +47,7 @@ body{
    
 .btn-shadow-drop2 {
     position: relative;
-    background: #8D8D8D;
+    background: #5F5F5F;
     padding: 20px;
     font-size: 0.9em;
     font-weight: 700;
@@ -65,9 +65,9 @@ body{
 } 
    
 .btn-shadow-drop--green2 {
-    border: 1px solid #666600;
+    border: 1px solid #3FCBDB;
     color: white;
-    box-shadow: #666600 4px 4px 0px 0px;
+    box-shadow: #3FCBDB 4px 4px 0px 0px;
     font-weight: 700;
     font-size: 1.3rem;
 } 
@@ -75,7 +75,7 @@ body{
     margin: 35px auto;
     width: 10%;
     color: white;
-    background-color: #666666;
+    background-color: #5F5F5F;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,18 +86,19 @@ body{
     width: 90%;
 }
 #start-btn{
-    margin:40px auto auto auto;
+    margin:40px auto 40px auto;
 }
 .starting-light{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #909090;
+    background-color: #949494;
     height: 200px;
     width: 100px;
     margin: auto;
     border-radius: 20px;
+    border: 2px solid white;
     
 }
 .light-red-l, .light-orange-l, .light-green-l, .light-red-r, .light-orange-r, .light-green-r{
@@ -123,12 +124,30 @@ body{
 }
 .cursor-red{
     background-repeat: no-repeat;
-    background-color: red;
+    background-color: #FF7777;
     color:aqua;
     background-image: linear-gradient(to right, white 15%, transparent 15%);
     background-repeat: no-repeat;
 }
 .error-highlight{
-    background-color: red;
+    background-color: #FF7777;
 }
-
+#stats-container{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    height: 120px;
+}
+.stat-slot{
+    width: 200px;
+    height: 100px;
+    background-color: #5F5F5F;
+    margin: 20px 30px 20px 30px;
+    border: 2px solid #3FCBDB;
+    border-radius: 10px;
+}
+.completed-track{
+    color:#3FCBDB;
+}

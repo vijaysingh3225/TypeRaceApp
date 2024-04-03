@@ -15,7 +15,7 @@ let currentWordCount = 0;
 let sentenceString = "";
 let randomNumber = Math.floor(Math.random() * 1000);
 let nextKey = "";
-let racer = 0;
+let racer = 0; //Position of cursor
 let errorCount = 0;
 let errorCommitted = false;
 let gameRunning = false;
@@ -24,18 +24,18 @@ startButton.onclick = function() {
     if (currentWordCount > 0) {
         gameRunning = true;
         setTimeout(() => {
-            redLightL.style.backgroundColor = "#830000";
-            redLightR.style.backgroundColor = "#830000";
+            redLightL.style.backgroundColor = "#72B7BF";
+            redLightR.style.backgroundColor = "#72B7BF";
         }, 500);
     
         setTimeout(() => {
-            orangeLightL.style.backgroundColor = "#BFB800";
-            orangeLightR.style.backgroundColor = "#BFB800";
+            orangeLightL.style.backgroundColor = "#72B7BF";
+            orangeLightR.style.backgroundColor = "#72B7BF";
         }, 1500);
     
         setTimeout(() => {
-            greenLightL.style.backgroundColor = "green";
-            greenLightR.style.backgroundColor = "green";
+            greenLightL.style.backgroundColor = "#00E6FF";
+            greenLightR.style.backgroundColor = "#00E6FF";
             racer=0;
             colorCharacterAtPosition(0);
             document.addEventListener('keydown', handleKeyPress);
@@ -45,31 +45,26 @@ startButton.onclick = function() {
         mainTrack.innerText = "SELECT WORD COUNT BEFORE STARTING!";
     }
 };
-function colorCharacterAtPosition(x) {
+function colorCharacterAtPosition(x) { //Initiate Cursor on track
     const outputDiv = document.getElementById('track-text');
     const text = outputDiv.innerText;
-    const newText = text.substring(0, x) + `<span class="cursor">${text.charAt(x)}</span>` + text.substring(x + 1);
+    const newText = `<span class="completed-track">${text.substring(0, x) }</span>`+ `<span class="cursor">${text.charAt(x)}</span>` + text.substring(x + 1);
     outputDiv.innerHTML = newText;
   }
-  function errorColorChange(x) {
+  function errorColorChange(x) { //Handles color change for incorrect characters
     const outputDiv = document.getElementById('track-text');
     const text = outputDiv.innerText;
-    const newText = text.substring(0, x-errorCount) + `<span class="error-highlight">${text.substring(x-errorCount, x)}</span>`+`<span class="cursor">${text.charAt(x)}</span>` + text.substring(x + 1);
+    const newText = `<span class="completed-track">${text.substring(0, x-errorCount)}</span>` + `<span class="error-highlight">${text.substring(x-errorCount, x)}</span>`+`<span class="cursor">${text.charAt(x)}</span>` + text.substring(x + 1);
     outputDiv.innerHTML = newText;
-    console.log("1: "+text.substring(0, x-1));
-    console.log("2: "+text.substring(x-1, x-1));
-    console.log("3: "+text.charAt(x));
-    console.log("4: "+text.substring(0, x-1));
-    console.log("5: "+text.substring(x+1));
-
-  }
-function handleKeyPress(event) {
+}
+function handleKeyPress(event) { //Function processes key inputs
     const key = event.key;
+    if(gameRunning){
     if(key == nextKey &&  !errorCommitted){
         racer++;
             colorCharacterAtPosition(racer);           
             nextKey=sentenceString.charAt(racer);
-    }else if(errorCount<4 && key != 'Backspace'){
+    }else if(errorCount<6 && key != 'Backspace'){
         racer++;
         errorCount++;
         errorColorChange(racer);
@@ -92,9 +87,25 @@ function handleKeyPress(event) {
     }
     else{
     }
+}
+if(racer>=mainTrack.innerText.length && errorCount == 0){
+    gameRunning=false;
+    racer=0;
+    redLightL.style.backgroundColor = "black";
+    redLightR.style.backgroundColor = "black";
+    orangeLightL.style.backgroundColor = "black";
+    orangeLightR.style.backgroundColor = "black";
+    greenLightL.style.backgroundColor = "black";
+    greenLightR.style.backgroundColor = "black";
+    mainTrack.innerText = "Race Completed!"+"\n"+"\nSelect a New Race Length";
+    currentWordCount = 0;
+    document.removeEventListener('keydown', handleKeyPress);
+}
     console.log("Error Count: "+errorCount);
     console.log("racer: "+racer);
-  }
+    console.log("Lenght: "+mainTrack.innerText.length);
+  
+}
 wordCountBtn1.onclick = function() {
     if(!gameRunning){
     sentenceString="";
