@@ -15,9 +15,14 @@ let currentWordCount = 0;
 let sentenceString = "";
 let randomNumber = Math.floor(Math.random() * 1000);
 let nextKey = "";
+let racer = 0;
+let errorCount = 0;
+let errorCommitted = false;
+let gameRunning = false;
 
 startButton.onclick = function() {
     if (currentWordCount > 0) {
+        gameRunning = true;
         setTimeout(() => {
             redLightL.style.backgroundColor = "#830000";
             redLightR.style.backgroundColor = "#830000";
@@ -31,31 +36,62 @@ startButton.onclick = function() {
         setTimeout(() => {
             greenLightL.style.backgroundColor = "green";
             greenLightR.style.backgroundColor = "green";
+            racer=0;
+            colorCharacterAtPosition(0);
+            document.addEventListener('keydown', handleKeyPress);
         }, 2500);
         
-        // Iterate over each character in the sentenceString
-        for (let i = 0; i < sentenceString.length; i++) {
-            const expectedKey = sentenceString.charAt(i);
-            let text = mainTrack.innerText;
-            let index = i;
-            const handleInput = (event) => {
-                if (event.key === expectedKey) {
-                    console.log(`You pressed the expected key: ${expectedKey}`);
-
-                    let newText = text.substring(0, index) + `<span style="color: red;">${text[index]}</span>` + text.substring(index + 1);
-                    mainTrack.innerHTML = newText;
-                } else {
-
-                }
-                document.removeEventListener('keydown', handleInput);
-            };
-            document.addEventListener('keydown', handleInput);
-        }
     } else {
         mainTrack.innerText = "SELECT WORD COUNT BEFORE STARTING!";
     }
 };
+function colorCharacterAtPosition(x) {
+    const outputDiv = document.getElementById('track-text');
+    const text = outputDiv.innerText;
+    const newText = text.substring(0, x) + `<span class="cursor">${text.charAt(x)}</span>` + text.substring(x + 1);
+    outputDiv.innerHTML = newText;
+  }
+  function errorColorChange(x) {
+    const outputDiv = document.getElementById('track-text');
+    const text = outputDiv.innerText;
+    const newText = text.substring(0, x-errorCount) + `<span class="cursor-red">${text.substring(x-errorCount, x+1)}</span>` + text.substring(x + 1);
+    outputDiv.innerHTML = newText;
+    console.log(text.substring(0, x-errorCount));
+    text.substring(errorCount);
+  }
+function handleKeyPress(event) {
+    const key = event.key;
+    if(key == nextKey &&  !errorCommitted){
+        racer++;
+            colorCharacterAtPosition(racer);           
+            nextKey=sentenceString.charAt(racer);
+    }else if(errorCount<4 && key != 'Backspace'){
+        racer++;
+        errorColorChange(racer);
+        errorCommitted = true;
+        errorCount++;
+    }
+    else if(key == 'Backspace'){
+        console.log("space");
+        if(racer>0)
+        racer--;
+        if(errorCount>1){
+            errorCount--;
+            errorColorChange(racer); 
+        }else{
+            errorCount=0;
+            errorCommitted=false;
+            colorCharacterAtPosition(racer);
+
+        }
+        nextKey=sentenceString.charAt(racer); 
+    }
+    else{
+
+    }
+  }
 wordCountBtn1.onclick = function() {
+    if(!gameRunning){
     sentenceString="";
     currentWordCount = 10;
     wordCount.innerText = 10;
@@ -64,9 +100,12 @@ wordCountBtn1.onclick = function() {
         sentenceString+= wordsArray[randomNumber]+" ";
     }
     mainTrack.innerText = sentenceString;
+    nextKey = sentenceString.charAt(0);
+    }
 }
 //Changes word count to 25
 wordCountBtn2.onclick = function() {
+    if(!gameRunning){
     wordCount.innerText = 25;
     sentenceString="";
     currentWordCount = 25;
@@ -75,9 +114,12 @@ wordCountBtn2.onclick = function() {
         sentenceString+= wordsArray[randomNumber]+" ";
     }
     mainTrack.innerText = sentenceString;
+    nextKey = sentenceString.charAt(0);
+}
 };
 //Changes word count to 50
 wordCountBtn3.onclick = function() {
+    if(!gameRunning){
     sentenceString="";
     wordCount.innerText = 50;
     currentWordCount = 50;
@@ -86,6 +128,8 @@ wordCountBtn3.onclick = function() {
         sentenceString+= wordsArray[randomNumber]+" ";
     }
     mainTrack.innerText = sentenceString;
+    nextKey = sentenceString.charAt(0);
+}
 }
 
 const wordsArray = [
