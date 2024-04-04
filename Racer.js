@@ -24,22 +24,22 @@ startButton.onclick = function() {
     if (currentWordCount > 0) {
         gameRunning = true;
         setTimeout(() => {
-            redLightL.style.backgroundColor = "#72B7BF";
-            redLightR.style.backgroundColor = "#72B7BF";
-        }, 500);
+            redLightL.style.backgroundColor = "#FF4D4D";
+            redLightR.style.backgroundColor = "#FF4D4D";
+        }, 200);
     
         setTimeout(() => {
-            orangeLightL.style.backgroundColor = "#72B7BF";
-            orangeLightR.style.backgroundColor = "#72B7BF";
-        }, 1500);
+            orangeLightL.style.backgroundColor = "#FF4D4D";
+            orangeLightR.style.backgroundColor = "#FF4D4D";
+        }, 1200);
     
         setTimeout(() => {
-            greenLightL.style.backgroundColor = "#00E6FF";
-            greenLightR.style.backgroundColor = "#00E6FF";
+            greenLightL.style.backgroundColor = "#3FCBDB";
+            greenLightR.style.backgroundColor = "#3FCBDB";
             racer=0;
             colorCharacterAtPosition(0);
             document.addEventListener('keydown', handleKeyPress);
-        }, 2500);
+        }, 2200);
         
     } else {
         mainTrack.innerText = "SELECT WORD COUNT BEFORE STARTING!";

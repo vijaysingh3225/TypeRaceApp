@@ -147,6 +147,11 @@ body{
     margin: 20px 30px 20px 30px;
     border: 2px solid #3FCBDB;
     border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
 }
 .completed-track{
     color:#3FCBDB;
