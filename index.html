@@ -4,13 +4,28 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="TrackSS.css" type="text/css">
+        <link rel="stylesheet" href="colorButtons.css" type="text/css">
         <link rel="icon" type="image/x-icon" href="Images\TypeRacerIcon.png">
     </head>
     <body>
+        <div id="color-palette">
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="red-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="orange-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="yellow-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="lime-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="green-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="bluegreen-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="ltblue-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="blue-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="drkblue-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="purple-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="pink-btn"></div>
+            <div class="color-button btn btn-shadow color-button-shadow-drop" id="majenta-btn"></div>
+        </div>
         <div id="word-count-btn-container">
-            <div class="btn2 btn-shadow-drop2 btn-shadow-drop--green2" id="word-count-btn-1">10</div>
-            <div class="btn2 btn-shadow-drop2 btn-shadow-drop--green2" id="word-count-btn-2">25</div>
-            <div class="btn2 btn-shadow-drop2 btn-shadow-drop--green2" id="word-count-btn-3">50</div>
+            <div class="btn btn-shadow btn-shadow-drop" id="word-count-btn-1">10</div>
+            <div class="btn btn-shadow btn-shadow-drop" id="word-count-btn-2">25</div>
+            <div class="btn btn-shadow btn-shadow-drop" id="word-count-btn-3">50</div>
         </div>
         <div id="word-count-container">Word Count: <span id="word-count"> - </span></div>
         <div id="track-container">
@@ -19,14 +34,14 @@
                 <div class="light-orange-l"></div>
                 <div class="light-green-l"></div>
             </div>
-            <div class="track track-shadow-drop track-shadow-drop--green" id="main-track"><p id="track-text">Select Sentence Length</p></div>
+            <div class="track track-shadow-drop track-shadow-drop" id="main-track"><p id="track-text">Select Sentence Length</p></div>
             <div class="starting-light">
                 <div class="light-red-r"></div> 
                 <div class="light-orange-r"></div>
                 <div class="light-green-r"></div>
             </div>
         </div>
-        <div class="btn2 btn-shadow-drop2 btn-shadow-drop--green2" id="start-btn">Start</div>
+        <div class="btn btn-shadow btn-shadow-drop" id="start-btn">Start</div>
         <div id=stats-container>
             <div class="stat-slot"></div>
             <div class="stat-slot"></div>
@@ -34,5 +49,6 @@
             <div class="stat-slot" id="timer">00:00:00</div>
         </div>
         <script src="Racer.js"></script>
+        <script src="ThemeChange.js"></script>
     </body>
 </html>

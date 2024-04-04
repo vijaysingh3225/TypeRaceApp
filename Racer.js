@@ -40,8 +40,8 @@ startButton.onclick = function() {
         }, 1200);
     
         setTimeout(() => {
-            greenLightL.style.backgroundColor = "#3FCBDB";
-            greenLightR.style.backgroundColor = "#3FCBDB";
+            greenLightL.style.backgroundColor = "#33FF33";
+            greenLightR.style.backgroundColor = "#33FF33";
             racer=0;
             colorCharacterAtPosition(0);
             startTimer();
@@ -121,7 +121,7 @@ wordCountBtn1.onclick = function() {
     currentWordCount = 10;
     wordCount.innerText = 10;
     for (let i = 0; i < 10; i++) {
-        const randomNumber = Math.floor(Math.random() * 1000);
+        const randomNumber = Math.floor(Math.random() * 999);
         sentenceString+= wordsArray[randomNumber]+" ";
     }
     mainTrack.innerText = sentenceString;
@@ -138,7 +138,7 @@ wordCountBtn2.onclick = function() {
     sentenceString="";
     currentWordCount = 25;
     for (let i = 0; i < 25; i++) {
-        const randomNumber = Math.floor(Math.random() * 1000);
+        const randomNumber = Math.floor(Math.random() * 999);
         sentenceString+= wordsArray[randomNumber]+" ";
     }
     mainTrack.innerText = sentenceString;
@@ -156,7 +156,7 @@ wordCountBtn3.onclick = function() {
     wordCount.innerText = 50;
     currentWordCount = 50;
     for (let i = 0; i < 50; i++) {
-        const randomNumber = Math.floor(Math.random() * 1000);
+        const randomNumber = Math.floor(Math.random() * 999);
         sentenceString+= wordsArray[randomNumber]+" ";
     }
     mainTrack.innerText = sentenceString;
@@ -206,7 +206,7 @@ function stopTimer() {
 }
 const wordsArray = [
     "the", "of", "to", "and", "a", "in", "is", "it", "you", "that", 
-    "he", "was", "for", "on", "are", "with", "as", "I", "his", "they", 
+    "he", "was", "for", "on", "are", "with", "as", "his", "they", 
     "be", "at", "one", "have", "this", "from", "or", "had", "by", "not", 
     "word", "but", "what", "some", "we", "can", "out", "other", "were", 
     "all", "there", "when", "up", "use", "your", "how", "said", "an", 
