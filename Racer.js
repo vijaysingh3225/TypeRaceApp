@@ -11,14 +11,20 @@ const orangeLightR = document.querySelector(".light-orange-r");
 const greenLightR = document.querySelector(".light-green-r");
 const mainTrack = document.querySelector("#track-text");
 const wordCount = document.querySelector("#word-count");
-let currentWordCount = 0;
-let sentenceString = "";
-let randomNumber = Math.floor(Math.random() * 1000);
-let nextKey = "";
-let racer = 0; //Position of cursor
-let errorCount = 0;
-let errorCommitted = false;
-let gameRunning = false;
+var currentWordCount = 0;
+var sentenceString = "";
+var randomNumber = Math.floor(Math.random() * 1000);
+var nextKey = "";
+var racer = 0; //Position of cursor
+var errorCount = 0;
+var errorCommitted = false;
+var gameRunning = false;
+var avgWordLength;
+var completionTime;
+var timerElement = document.getElementById("timer");
+var startTime;
+var timerInterval;
+var wpmElement = document.getElementById("wpm");
 
 startButton.onclick = function() {
     if (currentWordCount > 0) {
@@ -38,6 +44,7 @@ startButton.onclick = function() {
             greenLightR.style.backgroundColor = "#3FCBDB";
             racer=0;
             colorCharacterAtPosition(0);
+            startTimer();
             document.addEventListener('keydown', handleKeyPress);
         }, 2200);
         
@@ -100,12 +107,14 @@ if(racer>=mainTrack.innerText.length && errorCount == 0){
     mainTrack.innerText = "Race Completed!"+"\n"+"\nSelect a New Race Length";
     currentWordCount = 0;
     document.removeEventListener('keydown', handleKeyPress);
+    stopTimer();
 }
     console.log("Error Count: "+errorCount);
     console.log("racer: "+racer);
     console.log("Lenght: "+mainTrack.innerText.length);
   
 }
+
 wordCountBtn1.onclick = function() {
     if(!gameRunning){
     sentenceString="";
@@ -117,6 +126,9 @@ wordCountBtn1.onclick = function() {
     }
     mainTrack.innerText = sentenceString;
     nextKey = sentenceString.charAt(0);
+    let sentenceArray = sentenceString.split(" ");
+    console.log(sentenceArray);
+    avgWordLength=averageLength(sentenceArray);
     }
 }
 //Changes word count to 25
@@ -131,6 +143,10 @@ wordCountBtn2.onclick = function() {
     }
     mainTrack.innerText = sentenceString;
     nextKey = sentenceString.charAt(0);
+    let sentenceArray = sentenceString.split(" ");
+    console.log(sentenceArray);
+    avgWordLength=averageLength(sentenceArray);
+    console.log("Average Word Length: "+avgWordLength);
 }
 };
 //Changes word count to 50
@@ -145,9 +161,49 @@ wordCountBtn3.onclick = function() {
     }
     mainTrack.innerText = sentenceString;
     nextKey = sentenceString.charAt(0);
+    let sentenceArray = sentenceString.split(" ");
+    console.log(sentenceArray);
+    avgWordLength=averageLength(sentenceArray);
+    console.log("Average Word Length: "+avgWordLength);
 }
+}
+function averageLength(arrayx){
+    let lettercount = 0;
+    for(let i = 0;i<arrayx.length;i++){
+        lettercount+=arrayx[i].length;
+    }
+    let avg = lettercount/arrayx.length;
+    console.log("average word length: "+avg);
+    return avg;
 }
 
+
+function startTimer() {
+    startTime = Date.now(); 
+    timerInterval = setInterval(updateTimer, 10); 
+}
+
+function updateTimer() {
+    var elapsedTime = Date.now() - startTime; 
+    var minutes = Math.floor(elapsedTime / (60 * 1000));
+    var seconds = Math.floor((elapsedTime % (60 * 1000)) / 1000); 
+    var milliseconds = Math.floor((elapsedTime % 1000) / 10);
+    var wordsPerMinute = ((racer/avgWordLength)/((minutes*60)+seconds+(milliseconds/1000)))*60;
+    
+    if(racer>1)
+    wpmElement.textContent = "WPM: "+Math.floor(wordsPerMinute);
+
+    minutes = String(minutes).padStart(2, '0');
+    seconds = String(seconds).padStart(2, '0');
+    milliseconds = String(milliseconds).padStart(2, '0');
+    
+    
+    timerElement.textContent = minutes + ":" + seconds + ":" + milliseconds;
+}
+
+function stopTimer() {
+    clearInterval(timerInterval); // Stop the timer
+}
 const wordsArray = [
     "the", "of", "to", "and", "a", "in", "is", "it", "you", "that", 
     "he", "was", "for", "on", "are", "with", "as", "I", "his", "they", 
@@ -255,3 +311,4 @@ const wordsArray = [
     "enemy", "reply", "drink", "occur", "support", "speech", "nature", "range", "steam", "motion", "path", 
     "liquid", "log", "meant", "quotient", "teeth", "shell", "neck"
     ];
+ 
