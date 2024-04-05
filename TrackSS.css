@@ -25,7 +25,7 @@ body{
     margin-top:20px;
     border-radius: 20px;
     color: white;
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: 700;
     text-align: center;
 }
@@ -88,12 +88,6 @@ body{
 }
 #track-text{
     width: 90%;
-}
-#start-btn{
-    margin:40px auto 40px auto;
-    width:100px;
-    border-radius: 10px;
-    padding: 20px;
 }
 .starting-light{
     display: flex;
@@ -171,4 +165,23 @@ body{
 .stat-text{
     height:20%;
     margin: 5px;
+}
+#start-end-container{
+    display: flex;
+    height:100px;
+    width:20%;
+    margin: auto;
+    justify-content: center;
+}
+#start-btn{
+    width:100px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: auto 5px;
+}
+#end-btn{
+    width:100px;
+    border-radius: 10px;
+    padding: 20px;
+    margin: auto 5px;
 }
