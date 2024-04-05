@@ -150,6 +150,9 @@ wordCountBtn2.onclick = function() {
     let sentenceArray = sentenceString.split(" ");
     avgWordLength=averageLength(sentenceArray);
     charElement.textContent = sentenceString.length;
+    wpmElement.textContent = "--";
+    timerElement.textContent = "00:00:00";
+    accElement.textContent = "--";
 }
 };
 //Changes word count to 50
@@ -167,6 +170,9 @@ wordCountBtn3.onclick = function() {
     let sentenceArray = sentenceString.split(" ");
     avgWordLength=averageLength(sentenceArray);
     charElement.textContent = sentenceString.length;
+    wpmElement.textContent = "--";
+    timerElement.textContent = "00:00:00";
+    accElement.textContent = "--";
 }
 }
 function averageLength(arrayx){
