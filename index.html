@@ -34,7 +34,7 @@
                 <div class="light-orange-l"></div>
                 <div class="light-green-l"></div>
             </div>
-            <div class="track track-shadow-drop track-shadow-drop" id="main-track"><p id="track-text">Select Sentence Length</p></div>
+            <div class="track track-shadow-drop track-shadow-drop" id="main-track"><p id="track-text">First Select Race Length Above, Click Start When Ready</p></div>
             <div class="starting-light">
                 <div class="light-red-r"></div> 
                 <div class="light-orange-r"></div>
@@ -43,10 +43,10 @@
         </div>
         <div class="btn btn-shadow btn-shadow-drop" id="start-btn">Start</div>
         <div id=stats-container>
-            <div class="stat-slot"></div>
-            <div class="stat-slot"></div>
-            <div class="stat-slot" id="wpm">WPM:--</div>
-            <div class="stat-slot" id="timer">00:00:00</div>
+            <div class="stat-slot"><p class="stat-text">Characters:</p><p class="stat-text" id="character-count">--</p></div>
+            <div class="stat-slot"><p class="stat-text">Accuracy:</p><p class="stat-text" id="accuracy">--</p></div>
+            <div class="stat-slot"><p class="stat-text">WPM:</p><p class="stat-text" id="wpm">--</p></div>
+            <div class="stat-slot"><p class="stat-text">Time</p><p class="stat-text" id="timer">00:00:00</p></div>
         </div>
         <script src="Racer.js"></script>
         <script src="ThemeChange.js"></script>

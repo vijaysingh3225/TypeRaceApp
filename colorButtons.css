@@ -15,6 +15,7 @@
     scrollbar-width: none;
     padding-right: 5px;
     padding-bottom: 5px;
+    box-shadow: var(--theme-color) 4px 4px 0px 0px;
 }
 .color-button{
     height:25px;

@@ -21,10 +21,13 @@ var errorCommitted = false;
 var gameRunning = false;
 var avgWordLength;
 var completionTime;
-var timerElement = document.getElementById("timer");
 var startTime;
 var timerInterval;
+var timerElement = document.getElementById("timer");
 var wpmElement = document.getElementById("wpm");
+var accElement = document.getElementById("accuracy");
+var charElement = document.getElementById("character-count");
+var totalErrors = 0;
 
 startButton.onclick = function() {
     if (currentWordCount > 0) {
@@ -66,12 +69,14 @@ function colorCharacterAtPosition(x) { //Initiate Cursor on track
 }
 function handleKeyPress(event) { //Function processes key inputs
     const key = event.key;
+   
     if(gameRunning){
     if(key == nextKey &&  !errorCommitted){
         racer++;
             colorCharacterAtPosition(racer);           
             nextKey=sentenceString.charAt(racer);
     }else if(errorCount<6 && key != 'Backspace'){
+        totalErrors++;
         racer++;
         errorCount++;
         errorColorChange(racer);
@@ -109,14 +114,10 @@ if(racer>=mainTrack.innerText.length && errorCount == 0){
     document.removeEventListener('keydown', handleKeyPress);
     stopTimer();
 }
-    console.log("Error Count: "+errorCount);
-    console.log("racer: "+racer);
-    console.log("Lenght: "+mainTrack.innerText.length);
-  
 }
 
 wordCountBtn1.onclick = function() {
-    if(!gameRunning){
+    if(!gameRunning){ 
     sentenceString="";
     currentWordCount = 10;
     wordCount.innerText = 10;
@@ -127,8 +128,11 @@ wordCountBtn1.onclick = function() {
     mainTrack.innerText = sentenceString;
     nextKey = sentenceString.charAt(0);
     let sentenceArray = sentenceString.split(" ");
-    console.log(sentenceArray);
     avgWordLength=averageLength(sentenceArray);
+    charElement.textContent = sentenceString.length;
+    wpmElement.textContent = "--";
+    timerElement.textContent = "00:00:00";
+    accElement.textContent = "--";
     }
 }
 //Changes word count to 25
@@ -144,9 +148,8 @@ wordCountBtn2.onclick = function() {
     mainTrack.innerText = sentenceString;
     nextKey = sentenceString.charAt(0);
     let sentenceArray = sentenceString.split(" ");
-    console.log(sentenceArray);
     avgWordLength=averageLength(sentenceArray);
-    console.log("Average Word Length: "+avgWordLength);
+    charElement.textContent = sentenceString.length;
 }
 };
 //Changes word count to 50
@@ -162,9 +165,8 @@ wordCountBtn3.onclick = function() {
     mainTrack.innerText = sentenceString;
     nextKey = sentenceString.charAt(0);
     let sentenceArray = sentenceString.split(" ");
-    console.log(sentenceArray);
     avgWordLength=averageLength(sentenceArray);
-    console.log("Average Word Length: "+avgWordLength);
+    charElement.textContent = sentenceString.length;
 }
 }
 function averageLength(arrayx){
@@ -173,7 +175,6 @@ function averageLength(arrayx){
         lettercount+=arrayx[i].length;
     }
     let avg = lettercount/arrayx.length;
-    console.log("average word length: "+avg);
     return avg;
 }
 
@@ -190,13 +191,14 @@ function updateTimer() {
     var milliseconds = Math.floor((elapsedTime % 1000) / 10);
     var wordsPerMinute = ((racer/avgWordLength)/((minutes*60)+seconds+(milliseconds/1000)))*60;
     
-    if(racer>1)
-    wpmElement.textContent = "WPM: "+Math.floor(wordsPerMinute);
+    if(racer>1){
+    wpmElement.textContent = Math.floor(wordsPerMinute);
+    accElement.textContent = (((racer-errorCount)/((racer-errorCount)+totalErrors))*100).toFixed(2)+"%";
+    }
 
     minutes = String(minutes).padStart(2, '0');
     seconds = String(seconds).padStart(2, '0');
     milliseconds = String(milliseconds).padStart(2, '0');
-    
     
     timerElement.textContent = minutes + ":" + seconds + ":" + milliseconds;
 }
