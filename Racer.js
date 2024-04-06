@@ -3,6 +3,7 @@ const wordCountBtn1 = document.querySelector("#word-count-btn-1");
 const wordCountBtn2 = document.querySelector("#word-count-btn-2");
 const wordCountBtn3 = document.querySelector("#word-count-btn-3");
 const startButton = document.querySelector("#start-btn");
+const endButton = document.getElementById("end-btn");
 const redLightL = document.querySelector(".light-red-l");
 const orangeLightL = document.querySelector(".light-orange-l");
 const greenLightL = document.querySelector(".light-green-l");
@@ -51,8 +52,27 @@ startButton.onclick = function() {
             document.addEventListener('keydown', handleKeyPress);
         }, 2200);
         
-    } else {
-        mainTrack.innerText = "SELECT WORD COUNT BEFORE STARTING!";
+    } else {}
+};
+endButton.onclick = function() {
+    if(gameRunning){
+    gameRunning=false;
+    console.log("test");
+    mainTrack.innerText = ("First Select Race Length Above, Click Start When Ready");
+    gameRunning=false;
+    racer=0;
+    redLightL.style.backgroundColor = "black";
+    redLightR.style.backgroundColor = "black";
+    orangeLightL.style.backgroundColor = "black";
+    orangeLightR.style.backgroundColor = "black";
+    greenLightL.style.backgroundColor = "black";
+    greenLightR.style.backgroundColor = "black";
+    currentWordCount = 0;
+    errorCount=0;
+    document.removeEventListener('keydown', handleKeyPress);
+    stopTimer();
+    totalErrors=0;
+    errorCommitted=false;
     }
 };
 function colorCharacterAtPosition(x) { //Initiate Cursor on track
@@ -113,7 +133,7 @@ if(racer>=mainTrack.innerText.length && errorCount == 0){
     currentWordCount = 0;
     document.removeEventListener('keydown', handleKeyPress);
     stopTimer();
-}
+} 
 }
 
 wordCountBtn1.onclick = function() {
@@ -133,6 +153,7 @@ wordCountBtn1.onclick = function() {
     wpmElement.textContent = "--";
     timerElement.textContent = "00:00:00";
     accElement.textContent = "--";
+    totalErrors=0;
     }
 }
 //Changes word count to 25
@@ -153,6 +174,7 @@ wordCountBtn2.onclick = function() {
     wpmElement.textContent = "--";
     timerElement.textContent = "00:00:00";
     accElement.textContent = "--";
+    totalErrors=0;
 }
 };
 //Changes word count to 50
@@ -173,6 +195,7 @@ wordCountBtn3.onclick = function() {
     wpmElement.textContent = "--";
     timerElement.textContent = "00:00:00";
     accElement.textContent = "--";
+    totalErrors=0;
 }
 }
 function averageLength(arrayx){
