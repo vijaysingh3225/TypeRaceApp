@@ -2,7 +2,7 @@
     background-color: #323232;
     height: 15%;
     width: 8%;
-    position: fixed;
+    position: absolute;
     top: 10px;
     left: 10px;
     border: 2px solid var(--theme-color);
@@ -16,7 +16,7 @@
     padding-right: 5px;
     padding-bottom: 5px;
     box-shadow: var(--theme-color) 4px 4px 0px 0px;
-    margin-top: 15px;
+    margin-top: 65px;
 }
 .color-button{
     height:25px;
