@@ -1,4 +1,5 @@
 
+
 const wordCountBtn1 = document.querySelector("#word-count-btn-1");
 const wordCountBtn2 = document.querySelector("#word-count-btn-2");
 const wordCountBtn3 = document.querySelector("#word-count-btn-3");
