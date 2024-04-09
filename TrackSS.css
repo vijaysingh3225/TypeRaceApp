@@ -14,13 +14,48 @@ header{
     justify-content: space-between;
     align-items: center;
     font-size: 35px;
-    padding-left: 4%;
 }
 body{
     background-color: #444444;
 }
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    background-color: #353535;
+    margin-right: 50px;
+}
+.nav-item{
+    color: var(--theme-color);
+    font-size: 25px;
+    background-color: #353535;
+    margin: auto 10px;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    padding: 0px 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header a{
+    text-decoration: none;
+    color: var(--theme-color);
+    height: 100%; 
+}
+.nav-item:hover{
+    background-color: #444444;
+}
 #title{
     color: var(--theme-color);
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 #top-bar{
     width: 100%;
@@ -32,13 +67,13 @@ body{
     border: 1px solid var(--theme-color);
     box-shadow: var(--theme-color) 4px 4px 0px 0px;
   } 
-.track{
+#main-track{
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
     width: 55%;
-    height: 350px;
+    height: 275px;
     background-color: #5F5F5F;
     margin-top:20px;
     border-radius: 20px;
@@ -48,7 +83,7 @@ body{
     text-align: center;
 }
 #word-count-btn-container{
-    margin: 20px auto auto auto;
+    margin: 50px auto auto auto;
     width: 35%;
     height: 60px;
     display: flex;
@@ -192,13 +227,13 @@ body{
     justify-content: center;
 }
 #start-btn{
-    width:100px;
+    width:50px;
     border-radius: 10px;
     padding: 20px;
     margin: auto 10px;
 }
 #end-btn{
-    width:100px;
+    width:50px;
     border-radius: 10px;
     padding: 20px;
     margin: auto 10px;

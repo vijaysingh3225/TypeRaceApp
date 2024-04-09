@@ -23,10 +23,10 @@
     width:25px;
     margin: 5px;
     border-radius: 1000px;
+    border: none;
 }
 
 .color-button-shadow-drop{
-
     box-shadow: #5B5B5B 4px 4px 0px 0px;
     font-weight: 700;
     font-size: 1.3rem;
